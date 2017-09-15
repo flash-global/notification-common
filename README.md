@@ -176,3 +176,4 @@ $alert_android = (new Android())
           ->setRecipients(['email@provider.com', 'email2@provider.com'])
           ->setContent("Sms de test");
 ```
+
