@@ -1,0 +1,20 @@
+namespace: Fei\Tests\Notification
+suites:
+    unit:
+        path: .
+
+settings:
+    shuffle: true
+    lint: true
+paths:
+    tests: tests/unit
+    output: tests/unit/_output
+    support: tests/unit/_support
+    data: tests/unit
+coverage:
+    enabled: true
+    remote: false
+    include:
+        - src/*
+    exclude:
+        - vendor/*
