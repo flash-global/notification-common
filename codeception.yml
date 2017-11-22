@@ -8,6 +8,7 @@ settings:
     lint: true
 paths:
     tests: tests/unit
+    log: tests/_output
     output: tests/unit/_output
     support: tests/unit/_support
     data: tests/unit
