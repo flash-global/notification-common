@@ -1,26 +1,15 @@
-# Notification common
+# Service Notification - Common
 
-This is the Notification Common elements package which contains:
-                                       
-* Notification Entity and transformer
-* Notification Entity validator
-* Related classes
+[![GitHub release](https://img.shields.io/github/release/flash-global/notification-common.svg?style=for-the-badge)](README.md)
 
-# Installation and Requirement
-  
-Notification Common needs PHP 7 or higher.
+## Table of contents
+- [Entities](#entities)
+- [Contribution](#contribution)
+- [Examples](#examples)
 
-Add this requirement to your `composer.json: "fei/notification-common": : "^1.0"`
+## Entities
 
-Or execute `composer.phar require fei/notification-common` in your terminal.
-
-# Usage
-
-## Entities and classes
-
-### Notification entity
-
-In addition to traditional id and createdAt fields, Notification entity has **nine** important properties:
+### Notification
 
 | Properties    | Type              | Required | Default value |
 |---------------|-------------------|----------|---------------|
@@ -103,9 +92,12 @@ In addition to traditional id and createdAt fields, Notification entity has **ni
 | content       | `string`          |
 
 
-## Other tools
 
-### Notification hydrator and validator
+## Contribution
+As FEI Service, designed and made by OpCoding. The contribution workflow will involve both technical teams. Feel free to contribute, to improve features and apply patches, but keep in mind to carefully deal with pull request. Merging must be the product of complete discussions between Flash and OpCoding teams :) 
+
+
+## Examples
 
 You have the possibility to validate a `Notification` entity with NotificationValidator class:
 
