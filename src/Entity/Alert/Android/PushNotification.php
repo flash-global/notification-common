@@ -83,7 +83,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle()
     {
         return $this->title;
     }
@@ -106,7 +106,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getBody(): string
+    public function getBody()
     {
         return $this->body;
     }
@@ -129,7 +129,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getAndroidChannelId(): string
+    public function getAndroidChannelId()
     {
         return $this->androidChannelId;
     }
@@ -141,7 +141,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return $this
      */
-    public function setAndroidChannelId(string $androidChannelId):self
+    public function setAndroidChannelId(string $androidChannelId): self
     {
         $this->androidChannelId = $androidChannelId;
         return $this;
@@ -152,7 +152,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getIcon(): string
+    public function getIcon()
     {
         return $this->icon;
     }
@@ -175,7 +175,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getSound(): string
+    public function getSound()
     {
         return $this->sound;
     }
@@ -198,7 +198,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getTag(): string
+    public function getTag()
     {
         return $this->tag;
     }
@@ -221,7 +221,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getColor(): string
+    public function getColor()
     {
         return $this->color;
     }
@@ -244,7 +244,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getClickAction(): string
+    public function getClickAction()
     {
         return $this->clickAction;
     }
@@ -267,7 +267,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getBodyLocKey(): string
+    public function getBodyLocKey()
     {
         return $this->bodyLocKey;
     }
@@ -290,7 +290,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return array
      */
-    public function getBodyLocArgs(): array
+    public function getBodyLocArgs()
     {
         return $this->bodyLocArgs;
     }
@@ -313,7 +313,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return string
      */
-    public function getTitleLocKey(): string
+    public function getTitleLocKey()
     {
         return $this->titleLocKey;
     }
@@ -336,7 +336,7 @@ class PushNotification extends AbstractAndroid
      *
      * @return array
      */
-    public function getTitleLocArgs(): array
+    public function getTitleLocArgs()
     {
         return $this->titleLocArgs;
     }

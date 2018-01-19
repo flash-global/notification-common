@@ -18,6 +18,13 @@ use Zend\Validator\ValidatorChain;
  */
 class AndroidValidator extends AbstractValidator
 {
+    /**
+     * @param $entity
+     *
+     * @return bool
+     *
+     * @throws \Exception
+     */
     public function validate($entity)
     {
         if (!$entity instanceof Android) {
@@ -59,6 +66,8 @@ class AndroidValidator extends AbstractValidator
      * @param $notification
      *
      * @return bool
+     *
+     * @throws \Exception
      */
     public function validateNotification($notification)
     {

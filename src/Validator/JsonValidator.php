@@ -20,6 +20,7 @@ class JsonValidator extends AbstractValidator
      * Returns true if $value is as JSON
      *
      * @param  mixed $value
+     *
      * @return bool
      */
     public function isValid($value)

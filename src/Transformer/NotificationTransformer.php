@@ -11,6 +11,11 @@ use League\Fractal\TransformerAbstract;
  */
 class NotificationTransformer extends TransformerAbstract
 {
+    /**
+     * @param Notification $notification
+     *
+     * @return array
+     */
     public function transform(Notification $notification)
     {
         return [

@@ -42,10 +42,12 @@ class Android extends AbstractAlert
 
     /**
      * @return array
+     *
+     * @throws Android\Exception\AndroidPushException
      */
     public function getAndroidNotification(): array
     {
-        return $this->getMessage()->toArray();
+        return $this->getMessage()->buildArray();
     }
 
     /**
@@ -57,9 +59,11 @@ class Android extends AbstractAlert
     }
 
     /**
-     * @param array|\ArrayObject|\Traversable $data
+     * @param $data
      *
      * @return $this
+     *
+     * @throws \Fei\Entity\Exception
      */
     public function hydrate($data)
     {

@@ -17,6 +17,13 @@ use Fei\Service\Notification\Validator\NotificationValidator;
 class SmsValidator extends AbstractValidator
 {
 
+    /**
+     * @param $entity
+     *
+     * @return bool
+     *
+     * @throws \Exception
+     */
     public function validate($entity)
     {
         if (!$entity instanceof Sms) {
@@ -39,11 +46,11 @@ class SmsValidator extends AbstractValidator
     }
 
     /**
-     * validate message
-     *
      * @param $message
      *
      * @return bool
+     *
+     * @throws \Exception
      */
     public function validateMessages($message)
     {
@@ -72,6 +79,8 @@ class SmsValidator extends AbstractValidator
      * @param $notification
      *
      * @return bool
+     *
+     * @throws \Exception
      */
     public function validateNotification($notification)
     {
