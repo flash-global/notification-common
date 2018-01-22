@@ -83,7 +83,7 @@ class Message extends AbstractAndroid
      *
      * @return string
      */
-    public function getCollapseKey(): string
+    public function getCollapseKey()
     {
         return $this->collapseKey;
     }
@@ -106,7 +106,7 @@ class Message extends AbstractAndroid
      *
      * @return string
      */
-    public function getPriority(): string
+    public function getPriority()
     {
         return $this->priority;
     }
@@ -129,7 +129,7 @@ class Message extends AbstractAndroid
      *
      * @return int
      */
-    public function getTimeToLive(): int
+    public function getTimeToLive()
     {
         return $this->timeToLive;
     }
@@ -152,7 +152,7 @@ class Message extends AbstractAndroid
      *
      * @return string
      */
-    public function getRestrictedPackageName(): string
+    public function getRestrictedPackageName()
     {
         return $this->restrictedPackageName;
     }
@@ -175,7 +175,7 @@ class Message extends AbstractAndroid
      *
      * @return bool
      */
-    public function isDryRun(): bool
+    public function isDryRun()
     {
         return $this->dryRun;
     }

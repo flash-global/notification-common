@@ -60,6 +60,8 @@ class EmailValidator extends AbstractValidator
      * @param $notification
      *
      * @return bool
+     *
+     * @throws \Exception
      */
     public function validateNotification($notification)
     {

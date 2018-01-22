@@ -48,15 +48,15 @@
 
 ### Message (Android alert)
 
-| Properties    | Type              |
-|---------------|-------------------|
-| recipients     | `array`          |       
-| collapseKey     | `string`           |
-| priority     | `string`           |
-| timeToLive     | `integer`           |
-| restrictedPackageName     | `string`           |
-| dryRun     | `boolean`           |
-| pushNotification     | `PushNotification`        |
+| Properties    | Type              				| Required
+|---------------|-------------------				|------------------
+| recipients     | `array`          				| Yes
+| collapseKey     | `string`           			|	No
+| priority     | `string`           				| No
+| timeToLive     | `integer`           			| No
+| restrictedPackageName     | `string`      | No
+| dryRun     | `boolean`           					| No
+| pushNotification     | `PushNotification` | Yes
 
 
 ### Email alert entity

@@ -48,7 +48,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $origin
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateOrigin($origin)
     {
@@ -61,7 +62,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $recipient
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateRecipient($recipient)
     {
@@ -74,7 +76,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $event
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateEvent($event)
     {
@@ -87,7 +90,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $message
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateMessage($message)
     {
@@ -100,7 +104,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $type
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateType($type)
     {
@@ -118,7 +123,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $createdAt
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateCreatedAt($createdAt)
     {
@@ -131,7 +137,8 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $status
-     * @return mixed
+     *
+     * @return bool
      */
     public function validateStatus($status)
     {
@@ -150,6 +157,7 @@ class NotificationValidator extends AbstractValidator
 
     /**
      * @param $action
+     *
      * @return bool
      */
     public function validateAction($action)

@@ -20,6 +20,13 @@ use Zend\Validator\ValidatorChain;
 class MessageValidator extends AbstractValidator
 {
 
+    /**
+     * @param $entity
+     *
+     * @return bool
+     *
+     * @throws \Exception
+     */
     public function validate($entity)
     {
         if (!$entity instanceof Message) {
