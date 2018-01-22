@@ -38,8 +38,8 @@ class AndroidTest extends TestCase
                 ],
         ];
 
-        $messageMock = $this->getMockBuilder(Message::class)->setMethods(['toArray'])->getMock();
-        $messageMock->expects($this->once())->method('toArray')->willReturn($expected);
+        $messageMock = $this->getMockBuilder(Message::class)->setMethods(['buildArray'])->getMock();
+        $messageMock->expects($this->once())->method('buildArray')->willReturn($expected);
         $android->setMessage($messageMock);
 
         $this->assertEquals($expected, $android->getAndroidNotification());
