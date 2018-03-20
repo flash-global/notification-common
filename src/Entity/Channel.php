@@ -8,10 +8,12 @@
 
 namespace Fei\Service\Notification\Entity;
 
+use ObjectivePHP\Gateway\Entity\Entity;
+
 /**
  * Channel
  */
-class Channel
+class Channel extends Entity
 {
     /** @var int */
     protected $id;
