@@ -1,86 +1,84 @@
 <?php
 
-
 namespace Fei\Service\Notification\Tests\Validator\Alert\Android;
 
-use Exception;
 use Fei\Service\Notification\Entity\Alert\Android\Message;
-use Fei\Service\Notification\Entity\Alert\Android\PushNotification;
+use Fei\Service\Notification\Entity\Alert\Android\Notification;
 use Fei\Service\Notification\Validator\Alert\Android\MessageValidator;
 use PHPUnit\Framework\TestCase;
 
 class MessageValidatorTest extends TestCase
 {
-    public function testValidateFail()
+    public function getData()
     {
-        $messageValidator =  new MessageValidator();
-        $failTest = 'fail';
+        $notification = (new Notification())
+            ->setTitle('title')
+            ->setBody('body');
 
-        $this->expectException(Exception::class);
+        $notification2 = (new Notification())
+            ->setTitle('')
+            ->setBody('');
 
-        $messageValidator->validate($failTest);
+        return [
+            [[
+                'token' => 'token',
+                'topic' => 'topic',
+                'condition' => 'condition',
+                'data' => ['data' => 'test'],
+                'notification' => $notification
+            ], false],
+            [[
+                'token' => '',
+                'topic' => '',
+                'condition' => '',
+                'data' => [],
+                'notification' => $notification
+            ], false],
+            [[
+                'token' => 22,
+                'topic' => 22,
+                'condition' => 22,
+                'data' => 22,
+                'notification' => $notification
+            ], true, 4],
+            [[
+                'token' => '',
+                'topic' => '',
+                'condition' => '',
+                'data' => [],
+                'notification' => $notification2
+            ], true, 1],
+        ];
     }
 
-    public function testValidate()
+    /**
+     * @dataProvider getData
+     */
+    public function testValidation($data, $error, $count = 0)
     {
-        $messageValidator =  new MessageValidator();
         $message = (new Message())
-            ->addRecipient('fake-token')
-            ->setPushNotification(new PushNotification());
+            ->setToken($data['token'])
+            ->setTopic($data['topic'])
+            ->setCondition($data['condition'])
+            ->setData($data['data'])
+            ->setNotification($data['notification']);
 
-        $res = $messageValidator->validate($message);
+        $validator = new MessageValidator();
 
-        $this->assertTrue($res);
+        $this->assertEquals(!$error, $validator->validate($message));
+
+        if ($error) {
+            $this->assertEquals($count, count($validator->getErrors()));
+        }
     }
 
-    public function testValidateRecipientsSuccess()
+    public function testValidateWrongEntity()
     {
-        $messageValidator = new MessageValidator();
-        $recipients = ['recipient-token-1', 'recipient-token-2'];
+        $this->expectException(\Exception::class);
 
-        $this->assertTrue($messageValidator->validateRecipients($recipients));
-    }
+        $wrong = new Notification();
 
-    public function testValidateRecipientsFail()
-    {
-        $messageValidator = new MessageValidator();
-        $recipients = [];
-
-        $this->assertFalse($messageValidator->validateRecipients($recipients));
-        $this->assertEquals([
-            'recipients' => ['Recipients must be an array not empty']
-        ], $messageValidator->getErrors());
-    }
-
-    public function testValidateTimeToLiveSuccess()
-    {
-        $messageValidator =  new MessageValidator();
-        $ttl = 3456;
-
-        $this->assertTrue($messageValidator->validateTimeToLive($ttl));
-    }
-
-    public function testValidateTimeToLiveFail()
-    {
-        $messageValidator =  new MessageValidator();
-        $ttl = 'fake-ttl';
-
-        $this->assertFalse($messageValidator->validateTimeToLive($ttl));
-    }
-
-    public function testValidateNotificationSuccess()
-    {
-        $messageValidator =  new MessageValidator();
-        $notification = new PushNotification();
-
-        $this->assertTrue($messageValidator->validateNotification($notification));
-    }
-
-    public function testValidateNotificationFail()
-    {
-        $messageValidator =  new MessageValidator();
-        $notification = 'fake-notif';
-
-        $this->assertFalse($messageValidator->validateNotification($notification));
+        $validator = new MessageValidator();
+        $validator->validate($wrong);
     }
 }

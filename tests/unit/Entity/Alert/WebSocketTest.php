@@ -14,4 +14,12 @@ class WebSocketTest extends TestCase
 
         $this->assertEquals('websocket', $websocket->getType());
     }
+
+    public function testAction()
+    {
+        $websocket = new WebSocket();
+        $websocket->setAction('test');
+
+        $this->assertEquals('test', $websocket->getAction());
+    }
 }
