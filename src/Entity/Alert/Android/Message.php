@@ -41,7 +41,7 @@ class Message extends AbstractEntity
     /**
      * @return array
      */
-    public function getData(): array
+    public function getData()
     {
         return $this->data;
     }
@@ -50,7 +50,7 @@ class Message extends AbstractEntity
      * @param array $data
      * @return Message
      */
-    public function setData(array $data): Message
+    public function setData($data): Message
     {
         $this->data = $data;
         return $this;
@@ -77,7 +77,7 @@ class Message extends AbstractEntity
     /**
      * @return string
      */
-    public function getToken(): string
+    public function getToken()
     {
         return $this->token;
     }
@@ -86,7 +86,7 @@ class Message extends AbstractEntity
      * @param string $token
      * @return Message
      */
-    public function setToken(string $token): Message
+    public function setToken($token) : Message
     {
         $this->token = $token;
         return $this;
@@ -95,7 +95,7 @@ class Message extends AbstractEntity
     /**
      * @return string
      */
-    public function getTopic(): string
+    public function getTopic()
     {
         return $this->topic;
     }
@@ -104,7 +104,7 @@ class Message extends AbstractEntity
      * @param string $topic
      * @return Message
      */
-    public function setTopic(string $topic): Message
+    public function setTopic($topic) : Message
     {
         $this->topic = $topic;
         return $this;
@@ -113,7 +113,7 @@ class Message extends AbstractEntity
     /**
      * @return string
      */
-    public function getCondition(): string
+    public function getCondition()
     {
         return $this->condition;
     }
@@ -122,7 +122,7 @@ class Message extends AbstractEntity
      * @param string $condition
      * @return Message
      */
-    public function setCondition(string $condition): Message
+    public function setCondition($condition): Message
     {
         $this->condition = $condition;
         return $this;
