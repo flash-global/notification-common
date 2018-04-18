@@ -3,6 +3,7 @@
 namespace Fei\Service\Notification\Validator\Alert\Android;
 
 use Fei\Service\Notification\Entity\Alert\Android\Message;
+use Fei\Service\Notification\Entity\Alert\Android\Notification;
 use Fei\Service\Notification\Entity\Alert\Android\PushNotification;
 use Fei\Service\Notification\Validator\AbstractValidator;
 use Zend\Filter\FilterChain;
@@ -35,9 +36,11 @@ class MessageValidator extends AbstractValidator
             );
         }
 
-        $this->validateRecipients($entity->getRecipients());
-        $this->validateTimeToLive($entity->getTimeToLive());
-        $this->validateNotification($entity->getPushNotification());
+        $this->validateData($entity->getData());
+        $this->validateNotification($entity->getNotification());
+        $this->validateToken($entity->getToken());
+        $this->validateTopic($entity->getTopic());
+        $this->validateCondition($entity->getCondition());
 
         $errors = $this->getErrors();
 
@@ -45,16 +48,13 @@ class MessageValidator extends AbstractValidator
     }
 
     /**
-     * validate recipients
-     *
-     * @param $recipients
-     *
+     * @param $data
      * @return bool
      */
-    public function validateRecipients($recipients)
+    public function validateData($data)
     {
-        if (!is_array($recipients) || empty($recipients)) {
-            $this->addError('recipients', 'Recipients must be an array not empty');
+        if (!is_array($data)) {
+            $this->addError('data', 'Recipients must be an array');
             return false;
         }
 
@@ -62,18 +62,57 @@ class MessageValidator extends AbstractValidator
     }
 
     /**
-     * Validate timeToLive
-     *
-     * @param $timeToLive
-     *
+     * @param $token
      * @return bool
      */
-    public function validateTimeToLive($timeToLive)
+    public function validateToken($token)
     {
-        $chain = (new ValidatorChain())
-            ->attach(new Digits());
+        if (empty($token)) {
+            return true;
+        }
 
-        return $this->validateChain($chain, $timeToLive, 'timeToLive');
+        if (!is_string($token)) {
+            $this->addError('token', 'Token must be a string');
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $topic
+     * @return bool
+     */
+    public function validateTopic($topic)
+    {
+        if (empty($topic)) {
+            return true;
+        }
+
+        if (!is_string($topic)) {
+            $this->addError('topic', 'Topic must be a string');
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * @param $condition
+     * @return bool
+     */
+    public function validateCondition($condition)
+    {
+        if (empty($condition)) {
+            return true;
+        }
+
+        if (!is_string($condition)) {
+            $this->addError('condition', 'Condition must be a string');
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -85,10 +124,13 @@ class MessageValidator extends AbstractValidator
      */
     public function validateNotification($notification)
     {
-        $chain = (new ValidatorChain())
-            ->attach(new NotEmpty())
-            ->attach(new IsInstanceOf(PushNotification::class));
+        $validator = new NotificationValidator();
+        $validated = $validator->validate($notification);
 
-        return $this->validateChain($chain, $notification, 'notification');
+        if (!$validated) {
+            $this->addError('notification', $validator->getErrorsAsString());
+        }
+
+        return $validated;
     }
 }
