@@ -16,7 +16,7 @@ class Message extends AbstractEntity
     /**
      * @var array
      */
-    protected $data;
+    protected $data = [];
 
     /**
      * @var Notification
@@ -26,17 +26,17 @@ class Message extends AbstractEntity
     /**
      * @var string
      */
-    protected $token;
+    protected $token = '';
 
     /**
      * @var string
      */
-    protected $topic;
+    protected $topic = '';
 
     /**
      * @var string
      */
-    protected $condition;
+    protected $condition= '';
 
     /**
      * @return array
