@@ -41,16 +41,6 @@ class Android extends AbstractAlert
     }
 
     /**
-     * @return array
-     *
-     * @throws Android\Exception\AndroidPushException
-     */
-    public function getAndroidNotification(): array
-    {
-        return $this->getMessage()->buildArray();
-    }
-
-    /**
      * @inheritdoc
      */
     public function getType(): string
@@ -67,10 +57,10 @@ class Android extends AbstractAlert
      */
     public function hydrate($data)
     {
-        $pushNotification = (!empty($data['message']['pushNotification'])) ?
-            new Android\PushNotification($data['message']['pushNotification']) :
-            new Android\PushNotification();
-        $data['message']['pushNotification'] = $pushNotification;
+        $pushNotification = (!empty($data['message']['notification'])) ?
+            new Android\Notification($data['message']['notification']) :
+            new Android\Notification();
+        $data['message']['notification'] = $pushNotification;
         $data['message'] = (new Android\Message($data['message']));
 
         return parent::hydrate($data);
