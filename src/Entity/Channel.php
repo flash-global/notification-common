@@ -66,7 +66,7 @@ class Channel extends ObjectiveEntity
      */
     public function getEntityCollection() : string
     {
-        return 'channel';
+        return 'channels';
     }
 
 }
