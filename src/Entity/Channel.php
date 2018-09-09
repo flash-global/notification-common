@@ -8,12 +8,12 @@
 
 namespace Fei\Service\Notification\Entity;
 
-use ObjectivePHP\Gateway\Entity\Entity as ObjectiveEntity;
+use ObjectivePHP\Gateway\Entity\Entity;
 
 /**
  * Channel
  */
-class Channel extends ObjectiveEntity
+class Channel extends Entity
 {
     /** @var int */
     protected $id;
@@ -60,13 +60,4 @@ class Channel extends ObjectiveEntity
 
         return $this;
     }
-    
-     /**
-     * @return string
-     */
-    public function getEntityCollection() : string
-    {
-        return 'channels';
-    }
-
 }
