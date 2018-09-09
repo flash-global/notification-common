@@ -3,13 +3,8 @@
 namespace Fei\Service\Notification\Validator\Alert;
 
 use Fei\Service\Notification\Entity\Alert\Android;
-use Fei\Service\Notification\Entity\Notification;
-use Fei\Service\Notification\Entity\Alert\Android\Message;
 use Fei\Service\Notification\Validator\AbstractValidator;
-use Fei\Service\Notification\Validator\NotificationValidator;
-use Zend\Validator\IsInstanceOf;
-use Zend\Validator\NotEmpty;
-use Zend\Validator\ValidatorChain;
+use Fei\Service\Notification\Validator\Alert\Android\MessageValidator;
 
 /**
  * Class AndroidValidator
@@ -33,12 +28,6 @@ class AndroidValidator extends AbstractValidator
             );
         }
 
-        try {
-            $this->validateNotification($entity->getNotification());
-        } catch (\Exception $e) {
-            $this->addError('notification', sprintf('The notification has to be an instance of %s', Notification::class));
-        }
-
         $this->validateMessage($entity->getMessage());
 
         $errors = $this->getErrors();
@@ -55,28 +44,14 @@ class AndroidValidator extends AbstractValidator
      */
     public function validateMessage($message)
     {
-        $chain = (new ValidatorChain())
-            ->attach(new NotEmpty())
-            ->attach(new IsInstanceOf(Message::class));
+        $validator = new MessageValidator();
 
-        return $this->validateChain($chain, $message, 'message');
-    }
+        $validated = $validator->validate($message);
 
-    /**
-     * @param $notification
-     *
-     * @return bool
-     *
-     * @throws \Exception
-     */
-    public function validateNotification($notification)
-    {
-        $validator = new NotificationValidator();
-        if (!$validator->validate($notification)) {
-            $this->addError('notification', $validator->getErrorsAsString());
-            return false;
+        if (!$validated) {
+            $this->addError('message', $validator->getErrorsAsString());
         }
 
-        return true;
+        return $validated;
     }
 }
