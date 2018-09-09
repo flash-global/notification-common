@@ -60,8 +60,8 @@ class Channel extends ObjectiveEntity
 
         return $this;
     }
-    
-     /**
+
+    /**
      * @return string
      */
     public function getEntityCollection() : string

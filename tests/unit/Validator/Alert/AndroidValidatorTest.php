@@ -12,116 +12,58 @@ use PHPUnit\Framework\TestCase;
 
 class AndroidValidatorTest extends TestCase
 {
-    public function testValidateWhenNotAnEntityInterface()
-    {
-        $mock = $this->getMockBuilder(EntityInterface::class)->getMock();
-
-        $validator = new AndroidValidator();
-
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage(sprintf('The Entity to validate must be an instance of %s', Android::class));
-
-        $validator->validate($mock);
-    }
-
-    public function testValidateWhenEntityIsNotAnAndroidPush()
-    {
-        $androidValidator = new AndroidValidator();
-        $android = '';
-
-        $this->expectException(\Exception::class);
-
-        $androidValidator->validate($android);
-    }
-
     public function testValidate()
     {
-        $return = function () {
-            return true;
-        };
-
-        $validator = Stub::make(AndroidValidator::class, [
-            'validateEmail' => Stub::once($return),
-            'validateNotification' => Stub::once($return)
-        ]);
-
-        $android = (new Android())
-            ->setMessage(new Message())
-            ->setNotification(new Notification());
-
-        $results = $validator->validate($android);
-
-        $this->assertTrue($results);
-    }
-
-    public function testValidateWhenNotificationIsNotValid()
-    {
-        $validator = new AndroidValidator();
+        $notification = (new Android\Notification())
+            ->setTitle('title')
+            ->setBody('body');
 
         $message = (new Message())
-            ->setRecipients(['device1', 'device_2']);
+            ->setData(['data' => 'test'])
+            ->setCondition('condition')
+            ->setTopic('topic')
+            ->setToken('token')
+            ->setNotification($notification);
 
         $android = (new Android())
             ->setMessage($message);
 
-        $results = $validator->validate($android);
 
-        $this->assertFalse($results);
-        $this->assertEquals([
-            'notification' => [sprintf('The notification has to be an instance of %s', Notification::class)]
-        ], $validator->getErrors());
+        $validator = new AndroidValidator();
+
+        $this->assertEquals(true, $validator->validate($android));
     }
 
-    public function testValidateMessageSuccess()
+    public function testValidateWrongEntity()
     {
+        $this->expectException(\Exception::class);
 
-        $androidValidator = new AndroidValidator();
         $message = new Message();
 
-        $this->assertTrue($androidValidator->validateMessage($message));
+        $validator = new AndroidValidator();
+        $validator->validate($message);
     }
 
-    public function testValidateMessageFail()
+
+    public function testSubElementErrorValidation()
     {
+        $notification = (new Android\Notification())
+            ->setTitle('title')
+            ->setBody('');
 
-        $androidValidator = new AndroidValidator();
-        $message = 'message';
+        $message = (new Message())
+            ->setData(['data' => 'test'])
+            ->setCondition('condition')
+            ->setTopic('topic')
+            ->setToken('token')
+            ->setNotification($notification);
 
-        $this->assertFalse($androidValidator->validateMessage($message));
-    }
+        $android = (new Android())
+            ->setMessage($message);
 
-    public function testValidateNotificationSuccess()
-    {
-        $androidValidator = new AndroidValidator();
-        $notification = (new Notification())
-            ->setMessage("test")
-            ->setEvent("event")
-            ->setRecipient('recipient')
-            ->setOrigin("origin")
-            ->setAction(["action"])
-            ->setCreatedAt(new \Datetime())
-            ->setType(1)
-            ->setStatus(1);
 
-        $this->assertTrue($androidValidator->validateNotification($notification));
-    }
+        $validator = new AndroidValidator();
 
-    public function testValidateNotificationFail()
-    {
-        $androidValidator = new AndroidValidator();
-        $notification = (new Notification())
-            ->setMessage("test")
-            ->setEvent("event")
-            ->setRecipient('recipient')
-            ->setOrigin("origin")
-            ->setCreatedAt(new \Datetime())
-            ->setAction('test')
-            ->setType(1)
-            ->setStatus(1);
-
-        $this->assertFalse($androidValidator->validateNotification($notification));
-        $this->assertEquals([
-            'notification' => ['action: The input is not as JSON']
-        ], $androidValidator->getErrors());
+        $this->assertEquals(false, $validator->validate($android));
     }
 }
