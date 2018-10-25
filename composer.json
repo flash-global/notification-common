@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.2",
         "doctrine/common": "~2.7.0",
         "objective-php/gateway": "^1.0.0",
         "zendframework/zend-validator": "^2.10",
