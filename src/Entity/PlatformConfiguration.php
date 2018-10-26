@@ -26,9 +26,9 @@ class PlatformConfiguration extends AbstractEntity
     /**
      * @var integer
      *
-     * @Column(type="integer", name="`platform_id`")
+     * @Column(type="string", name="`type`")
      */
-    protected $platformId;
+    protected $type;
 
     /**
      * @var string
