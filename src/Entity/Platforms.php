@@ -160,4 +160,13 @@ class Platforms extends ObjectiveEntity
         $this->updatedBy = $updatedBy;
         return $this;
     }
+    
+     /**
+     * @return string
+     */
+    public function getEntityCollection() : string
+    {
+        return 'platforms';
+    }
+
 }
