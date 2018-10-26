@@ -2,17 +2,12 @@
 
 namespace Fei\Service\Notification\Entity;
 
-use Fei\Entity\AbstractEntity;
+use ObjectivePHP\Gateway\Entity\Entity as ObjectiveEntity;
 
 /**
- * Class Platforms
- *
- * @Entity
- * @Table(name="platforms")
- *
- * @package Fei\Service\Notification\Entity
+ * Platforms
  */
-class Platforms extends AbstractEntity
+class Platforms extends ObjectiveEntity
 {
     /**
      * @var int
