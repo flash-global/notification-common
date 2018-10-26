@@ -5,14 +5,14 @@ namespace Fei\Service\Notification\Entity;
 use Fei\Entity\AbstractEntity;
 
 /**
- * Class PlatformConfiguration
+ * Class Platforms
  *
  * @Entity
- * @Table(name="platforms_configuration")
+ * @Table(name="platforms")
  *
  * @package Fei\Service\Notification\Entity
  */
-class PlatformConfiguration extends AbstractEntity
+class Platforms extends AbstractEntity
 {
     /**
      * @var int
@@ -26,9 +26,9 @@ class PlatformConfiguration extends AbstractEntity
     /**
      * @var integer
      *
-     * @Column(type="integer", name="`platform_id`")
+     * @Column(type="string", name="`type`")
      */
-    protected $platformId;
+    protected $type;
 
     /**
      * @var string
@@ -68,7 +68,7 @@ class PlatformConfiguration extends AbstractEntity
 
     /**
      * @param int $id
-     * @return PlatformConfiguration
+     * @return Platforms
      */
     public function setId($id)
     {
@@ -77,20 +77,20 @@ class PlatformConfiguration extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getPlatformId()
+    public function getType()
     {
-        return $this->platformId;
+        return $this->type;
     }
 
     /**
-     * @param int $platformId
-     * @return PlatformConfiguration
+     * @param string $platformType
+     * @return Platforms
      */
-    public function setPlatformId($platformId)
+    public function setType($platformType)
     {
-        $this->platformId = $platformId;
+        $this->type = $platformType;
         return $this;
     }
 
@@ -104,7 +104,7 @@ class PlatformConfiguration extends AbstractEntity
 
     /**
      * @param string $key
-     * @return PlatformConfiguration
+     * @return Platforms
      */
     public function setKey($key)
     {
@@ -122,7 +122,7 @@ class PlatformConfiguration extends AbstractEntity
 
     /**
      * @param string $value
-     * @return PlatformConfiguration
+     * @return Platforms
      */
     public function setValue($value)
     {
@@ -140,7 +140,7 @@ class PlatformConfiguration extends AbstractEntity
 
     /**
      * @param string $updatedAt
-     * @return PlatformConfiguration
+     * @return Platforms
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -158,7 +158,7 @@ class PlatformConfiguration extends AbstractEntity
 
     /**
      * @param string $updatedBy
-     * @return PlatformConfiguration
+     * @return Platforms
      */
     public function setUpdatedBy($updatedBy)
     {
