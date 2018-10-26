@@ -25,7 +25,7 @@ class PlatformsTransformer extends TransformerAbstract
     {
         return [
             'id' => $platforms->getId(),
-	    'type' => $platforms->getName(),
+	    'type' => $platforms->getType(),
 	    'key' => $platforms->getKey(),
 	    'value' => $platforms->getValue(),
 	    'updatedat' => $platforms->getUpdatedAt(),
