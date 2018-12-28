@@ -126,7 +126,7 @@ class AlertTransformer extends TransformerAbstract
 
     public function toArray(Alert $alert) : array
     {
-	return transform($alert);
+	return $this->transform($alert);
     }
 
 }
