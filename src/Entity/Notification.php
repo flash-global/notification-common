@@ -65,7 +65,7 @@ class Notification extends ObjectiveEntity implements ContextsAwareInterface
         parent::__construct($input, $flags, $iteratorClass);
 
         if (empty($input['createdAt'])) {
-            $this->setCreatedAt(new \DateTime());
+            $this->setCreatedAt((new \DateTime())->format('Y-m-d H:i'));
         }
     }
 
@@ -233,7 +233,7 @@ class Notification extends ObjectiveEntity implements ContextsAwareInterface
     public function setCreatedAt($createdAt): self
     {
         if (is_string($createdAt)) {
-            $createdAt = new \DateTime($createdAt);
+            $createdAt = (new \DateTime($createdAt))->format('Y-m-d H:i');
         }
 
         $this->createdAt = $createdAt;
