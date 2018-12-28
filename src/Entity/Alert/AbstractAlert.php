@@ -68,10 +68,4 @@ abstract class AbstractAlert extends AbstractEntity
         return $this;
     }
 
-    /**
-     * Get the type of the alert (email, sms, etc.)
-     * 
-     * @return string
-     */
-    abstract public function getType(): string;
 }

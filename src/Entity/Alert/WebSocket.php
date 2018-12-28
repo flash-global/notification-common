@@ -1,5 +1,8 @@
 <?php
+
 namespace Fei\Service\Notification\Entity\Alert;
+
+use Fei\Service\Notification\Entity\Alert;
 
 /**
  * Class WebSocket
@@ -39,6 +42,6 @@ class WebSocket extends AbstractAlert
      */
     public function getType(): string
     {
-        return 'websocket';
+        return Alert::ALERT_WS;
     }
 }

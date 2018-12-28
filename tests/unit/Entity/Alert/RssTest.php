@@ -2,23 +2,23 @@
 namespace Fei\Service\Notification\Tests\Entity;
 
 use Fei\Service\Notification\Entity\Alert;
-use Fei\Service\Notification\Entity\Alert\Email;
+use Fei\Service\Notification\Entity\Alert\Rss;
 use PHPUnit\Framework\TestCase;
 
-class EmailTest extends TestCase
+class RssTest extends TestCase
 {
-    public function testEmailAccessors()
+    public function testRssAccessors()
     {
-        $alert = new Email();
-        $alert->setEmail("toto@test.com");
+        $alert = new Rss();
+        $alert->setRecipient("toto");
 
-        $this->assertEquals("toto@test.com", $alert->getEmail());
-        $this->assertAttributeEquals($alert->getEmail(), 'email', $alert);
+        $this->assertEquals("toto", $alert->getRecipient());
+        $this->assertAttributeEquals($alert->getRecipient(), 'recipient', $alert);
     }
 
     public function testContentAccessors()
     {
-        $alert = new Email();
+        $alert = new Rss();
         $alert->setContent("fake-content");
 
         $this->assertEquals("fake-content", $alert->getContent());
@@ -27,7 +27,7 @@ class EmailTest extends TestCase
 
     public function testSubjectAccessors()
     {
-        $alert = new Email();
+        $alert = new Rss();
         $alert->setSubject("fake-subject");
 
         $this->assertEquals("fake-subject", $alert->getSubject());
@@ -36,8 +36,8 @@ class EmailTest extends TestCase
 
     public function testGetType()
     {
-        $alert = new Email();
+        $alert = new Rss();
 
-        $this->assertEquals(Alert::ALERT_EMAIL, $alert->getType());
+        $this->assertEquals(Alert::ALERT_RSS, $alert->getType());
     }
 }

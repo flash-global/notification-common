@@ -3,6 +3,7 @@
 
 namespace Fei\Service\Notification\Entity\Alert;
 
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\Android\Message;
 
 /**
@@ -45,7 +46,7 @@ class Android extends AbstractAlert
      */
     public function getType(): string
     {
-        return 'android-push';
+        return Alert::ALERT_ANDROID;
     }
 
     /**
