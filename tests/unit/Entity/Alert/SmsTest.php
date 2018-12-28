@@ -3,6 +3,7 @@
 
 namespace Fei\Service\Notification\Tests\Entity;
 
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\Sms;
 use Fei\Service\Notification\Entity\Alert\Sms\Message;
 use PHPUnit\Framework\TestCase;
@@ -18,7 +19,7 @@ class SmsTest extends TestCase
 
     public function testGetTypeName()
     {
-        $this->assertEquals('sms', (new Sms())->getType());
+        $this->assertEquals(Alert::ALERT_SMS, (new Sms())->getType());
     }
 
     protected function testOneAccessors($name, $set, $expected = null)

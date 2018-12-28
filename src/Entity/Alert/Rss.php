@@ -4,14 +4,14 @@ namespace Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert;
 
 /**
- * Class Email
+ * Class Rss
  *
  * @package Fei\Service\Notification\Entity\Alert
  */
-class Email extends AbstractAlert
+class Rss extends AbstractAlert
 {
     /** @var string */
-    protected $email;
+    protected $recipient;
 
     /** @var string */
     protected $subject;
@@ -20,25 +20,25 @@ class Email extends AbstractAlert
     protected $content;
 
     /**
-     * Get Email
+     * Get Recipient
      *
      * @return string
      */
-    public function getEmail(): string
+    public function getRecipient(): string
     {
-        return $this->email;
+        return $this->recipient;
     }
 
     /**
-     * Set Email
+     * Set Recipient
      *
-     * @param string $email
+     * @param string $recipient
      *
      * @return self
      */
-    public function setEmail(string $email): self
+    public function setRecipient(string $recipient): self
     {
-        $this->email = $email;
+        $this->recipient = $recipient;
 
         return $this;
     }
@@ -95,6 +95,6 @@ class Email extends AbstractAlert
      */
     public function getType(): string
     {
-        return Alert::ALERT_EMAIL;
+        return Alert::ALERT_RSS;
     }
 }
