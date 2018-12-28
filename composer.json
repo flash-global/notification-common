@@ -1,6 +1,6 @@
 {
     "name": "fei/notification-common",
-    "license": "proprietary",
+    "license": "GPL-3.0",
     "description": "Flash Notification - Common components",
     "type": "library",
     "keywords": [
@@ -11,12 +11,6 @@
         {
             "name": "yoctu",
             "email": "contact@yoctu.com"
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://composer.flash.global"
         }
     ],
     "require": {

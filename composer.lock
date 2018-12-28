@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "184a62b1be35747d4782922b17d23484",
+    "content-hash": "924c14567423d18eb34ff1c7e2dcc593",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -453,7 +453,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/flash-global/entities/zipball/1c1bcbd20b7bce230fdc0c186497de6b921fc7d7",
                 "reference": "1c1bcbd20b7bce230fdc0c186497de6b921fc7d7",
-                "shasum": "a265d4141cbb1bcf98a8064aa0f3976635e89c00"
+                "shasum": ""
             },
             "require-dev": {
                 "codeception/codeception": "^2.2",
@@ -466,6 +466,7 @@
                     "Fei\\Entity\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0"
             ],
@@ -477,10 +478,6 @@
                 }
             ],
             "description": "Entities descriptors and helpers",
-            "support": {
-                "source": "https://github.com/flash-global/entities/tree/v1.1.8",
-                "issues": "https://github.com/flash-global/entities/issues"
-            },
             "time": "2018-06-19T08:14:51+00:00"
         },
         {
