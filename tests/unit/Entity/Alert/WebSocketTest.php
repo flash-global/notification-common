@@ -4,6 +4,7 @@
 namespace Fei\Service\Notification\Tests\Entity;
 
 use PHPUnit\Framework\TestCase;
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\WebSocket;
 
 class WebSocketTest extends TestCase
@@ -12,7 +13,7 @@ class WebSocketTest extends TestCase
     {
         $websocket = new WebSocket();
 
-        $this->assertEquals('websocket', $websocket->getType());
+        $this->assertEquals(Alert::ALERT_WS, $websocket->getType());
     }
 
     public function testAction()

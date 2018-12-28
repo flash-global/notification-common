@@ -3,6 +3,7 @@
 
 namespace Fei\Service\Notification\Tests\Entity;
 
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\Android;
 use Fei\Service\Notification\Entity\Alert\Android\Message;
 use PHPUnit\Framework\TestCase;
@@ -21,7 +22,7 @@ class AndroidTest extends TestCase
 
     public function testGetTypeName()
     {
-        $this->assertEquals('android-push', (new Android())->getType());
+        $this->assertEquals(Alert::ALERT_ANDROID, (new Android())->getType());
     }
 
     public function testHydrate()

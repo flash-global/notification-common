@@ -3,6 +3,7 @@
 
 namespace Fei\Service\Notification\Entity\Alert;
 
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\Sms\Message;
 
 /**
@@ -44,6 +45,6 @@ class Sms extends AbstractAlert
      */
     public function getType(): string
     {
-        return 'sms';
+        return Alert::ALERT_SMS;
     }
 }

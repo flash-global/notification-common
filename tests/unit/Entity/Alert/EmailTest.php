@@ -1,6 +1,7 @@
 <?php
 namespace Fei\Service\Notification\Tests\Entity;
 
+use Fei\Service\Notification\Entity\Alert;
 use Fei\Service\Notification\Entity\Alert\Email;
 use PHPUnit\Framework\TestCase;
 
@@ -37,6 +38,6 @@ class EmailTest extends TestCase
     {
         $alert = new Email();
 
-        $this->assertEquals('email', $alert->getType());
+        $this->assertEquals(Alert::ALERT_EMAIL, $alert->getType());
     }
 }
