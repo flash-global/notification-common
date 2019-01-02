@@ -19,6 +19,36 @@ class Sms extends AbstractAlert
     protected $messages;
 
     /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+        $this->setType(Alert::ALERT_SMS);
+    }
+
+    /**
+     * Set Type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(): self
+    {
+        $this->type = Alert::ALERT_SMS;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getType(): string
+    {
+        return Alert::ALERT_SMS;
+    }
+
+    /**
      * Get Message
      *
      * @return Message[]
@@ -38,13 +68,5 @@ class Sms extends AbstractAlert
     {
         $this->messages = $messages;
         return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getType(): string
-    {
-        return Alert::ALERT_SMS;
     }
 }

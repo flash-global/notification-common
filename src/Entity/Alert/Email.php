@@ -20,6 +20,36 @@ class Email extends AbstractAlert
     protected $content;
 
     /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+        $this->setType(Alert::ALERT_EMAIL);
+    }
+
+    /**
+     * Set Type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(): self
+    {
+        $this->type = Alert::ALERT_EMAIL;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getType(): string
+    {
+        return Alert::ALERT_EMAIL;
+    }
+
+    /**
      * Get Email
      *
      * @return string
@@ -88,13 +118,5 @@ class Email extends AbstractAlert
     {
         $this->subject = $subject;
         return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getType(): string
-    {
-        return Alert::ALERT_EMAIL;
     }
 }

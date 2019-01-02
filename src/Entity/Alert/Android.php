@@ -19,6 +19,36 @@ class Android extends AbstractAlert
     protected $message;
 
     /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+        $this->setType(Alert::ALERT_ANDROID);
+    }
+
+    /**
+     * Set Type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(): self
+    {
+        $this->type = Alert::ALERT_ANDROID;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getType(): string
+    {
+        return Alert::ALERT_ANDROID;
+    }
+
+    /**
      * Get Message
      *
      * @return Message
@@ -39,14 +69,6 @@ class Android extends AbstractAlert
     {
         $this->message = $message;
         return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getType(): string
-    {
-        return Alert::ALERT_ANDROID;
     }
 
     /**
