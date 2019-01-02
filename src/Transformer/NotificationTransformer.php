@@ -11,6 +11,7 @@ use League\Fractal\TransformerAbstract;
  */
 class NotificationTransformer extends TransformerAbstract
 {
+
     /**
      * @param Notification $notification
      *

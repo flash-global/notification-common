@@ -17,6 +17,36 @@ class WebSocket extends AbstractAlert
     protected $action = self::ACTION_NEW;
 
     /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+        $this->setType(Alert::ALERT_WS);
+    }
+
+    /**
+     * Set Type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(): self
+    {
+        $this->type = Alert::ALERT_WS;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getType(): string
+    {
+        return Alert::ALERT_WS;
+    }
+
+    /**
      * @return string
      */
     public function getAction() : string
@@ -33,15 +63,5 @@ class WebSocket extends AbstractAlert
         $this->action = $action;
 
         return $this;
-    }
-
-    /**
-     * Get the type of the alert (email, sms, etc.)
-     *
-     * @return string
-     */
-    public function getType(): string
-    {
-        return Alert::ALERT_WS;
     }
 }

@@ -60,10 +60,18 @@ class Notification extends ObjectiveEntity implements ContextsAwareInterface
      * @param int    $flags
      * @param string $iteratorClass
      */
-    public function __construct($input = [], $flags = 0, $iteratorClass = "ArrayIterator")
+    public function __construct($input = null)
     {
-        parent::__construct($input, $flags, $iteratorClass);
-
+	if ($input['id']) $this->setId($input['id']);
+	if ($input['recipient']) $this->setRecipient($input['recipient']);
+	if ($input['event']) $this->setEvent($input['event']);
+	if ($input['type']) $this->setType($input['type']);
+	if ($input['origin']) $this->setOrigin($input['origin']);
+	if ($input['message']) $this->setMessage($input['message']);
+	if ($input['status']) $this->setStatus($input['status']);
+	if ($input['parentNotificationId']) $this->setParentNotificationId($input['parentNotificationId']);
+	if ($input['context']) $this->setContext($input['context']);
+	if ($input['action']) $this->setContext($input['action']);
         if (empty($input['createdAt'])) {
             $this->setCreatedAt((new \DateTime())->format('Y-m-d H:i'));
         }
