@@ -3,6 +3,7 @@ namespace Fei\Service\Notification\Entity\Alert;
 
 use Fei\Entity\AbstractEntity;
 use Fei\Service\Notification\Entity\Notification;
+use Fei\Service\Notification\Entity\Alert;
 
 /**
  * Class AbstractAlert
@@ -18,7 +19,10 @@ abstract class AbstractAlert extends AbstractEntity
     /**
      * @var int
      */
-    protected $trigger = null;
+    protected $trigger = 0;
+
+    /** @var string */
+    protected $type = Alert::ALERT_UNKNOWN;
 
     /**
      * Get Notification

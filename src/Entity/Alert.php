@@ -15,7 +15,7 @@ use ObjectivePHP\Gateway\Entity\Entity as ObjectiveEntity;
  */
 class Alert extends ObjectiveEntity
 {
-
+    const ALERT_UNKNOWN  = "UNKNOWN";
     const ALERT_EMAIL   = "EMAIL";
     const ALERT_ANDROID = "ANDROID";
     const ALERT_SMS     = "SMS";

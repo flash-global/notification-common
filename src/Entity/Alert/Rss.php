@@ -3,6 +3,7 @@ namespace Fei\Service\Notification\Entity\Alert;
 
 use Fei\Service\Notification\Entity\Alert;
 
+
 /**
  * Class Rss
  *
@@ -18,6 +19,15 @@ class Rss extends AbstractAlert
 
     /** @var string */
     protected $content;
+
+    /**
+     * Construct
+     *
+     */
+    public function __construct()
+    {
+	$this->setType(Alert::ALERT_RSS);
+    }
 
     /**
      * Get Recipient
@@ -68,6 +78,27 @@ class Rss extends AbstractAlert
     }
 
     /**
+     * Set Type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType(): self
+    {
+        $this->type = Alert::ALERT_RSS;
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getType(): string
+    {
+        return Alert::ALERT_RSS;
+    }
+
+    /**
      * Get Subject
      *
      * @return string
@@ -88,13 +119,5 @@ class Rss extends AbstractAlert
     {
         $this->subject = $subject;
         return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getType(): string
-    {
-        return Alert::ALERT_RSS;
     }
 }

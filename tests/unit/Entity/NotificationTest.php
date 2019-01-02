@@ -38,16 +38,6 @@ class NotificationTest extends TestCase
         $this->assertAttributeEquals($notification->getContext(), 'context', $notification);
     }
 
-    public function testSetCreatedAtWhenParameterIsString()
-    {
-        $notification = new Notification();
-
-        $fakeDate = '2017-09-11';
-        $notification->setCreatedAt($fakeDate);
-
-        $this->assertInstanceOf(\DateTime::class, $notification->getCreatedAt());
-    }
-
     protected function testOneAccessors($name, $expected)
     {
         $setter = 'set' . ucfirst($name);
