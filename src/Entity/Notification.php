@@ -1,4 +1,5 @@
 <?php
+
 namespace Fei\Service\Notification\Entity;
 
 use ObjectivePHP\Gateway\Entity\Entity as ObjectiveEntity;
@@ -62,19 +63,40 @@ class Notification extends ObjectiveEntity implements ContextsAwareInterface
      */
     public function __construct($input = null)
     {
-	if ($input['id']) $this->setId($input['id']);
-	if ($input['recipient']) $this->setRecipient($input['recipient']);
-	if ($input['event']) $this->setEvent($input['event']);
-	if ($input['type']) $this->setType($input['type']);
-	if ($input['origin']) $this->setOrigin($input['origin']);
-	if ($input['message']) $this->setMessage($input['message']);
-	if ($input['status']) $this->setStatus($input['status']);
-	if ($input['parentNotificationId']) $this->setParentNotificationId($input['parentNotificationId']);
-	if ($input['context']) $this->setContext($input['context']);
-	if ($input['action']) $this->setContext($input['action']);
-        if (empty($input['createdAt'])) {
-            $this->setCreatedAt((new \DateTime())->format('Y-m-d H:i'));
+        if (is_array($input)) {
+            if (array_key_exists('id', $input)) {
+                $this->setId($input['id']);
+            }
+            if (array_key_exists('recipient', $input)) {
+                $this->setRecipient($input['recipient']);
+            }
+            if (array_key_exists('event', $input)) {
+                $this->setEvent($input['event']);
+            }
+            if (array_key_exists('type', $input)) {
+                $this->setType($input['type']);
+            }
+            if (array_key_exists('origin', $input)) {
+                $this->setOrigin($input['origin']);
+            }
+            if (array_key_exists('message', $input)) {
+                $this->setMessage($input['message']);
+            }
+            if (array_key_exists('status', $input)) {
+                $this->setStatus($input['status']);
+            }
+            if (array_key_exists('parent_notification_id', $input)) {
+                $this->setParentNotificationId($input['parent_notification_id']);
+            }
+            if (array_key_exists('context', $input)) {
+                $this->setContext($input['context']);
+            }
+            if (array_key_exists('action', $input)) {
+                $this->setContext($input['action']);
+            }
         }
+
+        $this->setCreatedAt((new \DateTime())->format('Y-m-d H:i'));
     }
 
     /**
@@ -316,14 +338,14 @@ class Notification extends ObjectiveEntity implements ContextsAwareInterface
     /**
      * @return string
      */
-    public function getEntityCollection() : string
+    public function getEntityCollection(): string
     {
         return 'notifications';
     }
 
     /**
      * @inheritdoc
-    */
+     */
     public function setContext($context, $value = null)
     {
         if ($value === null && is_array($context)) {
