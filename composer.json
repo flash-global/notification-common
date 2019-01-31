@@ -14,12 +14,12 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.0",
         "doctrine/common": "~2.7.0",
         "objective-php/gateway": "^1.0.0",
         "zendframework/zend-validator": "^2.10",
         "league/fractal": "^0.14.0",
-        "fei/entities": "^1.0.3"
+        "fei/entities": "~1.1.0"
     },
     "require-dev" : {
         "codeception/codeception": "^2.2",
